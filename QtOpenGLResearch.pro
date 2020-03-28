@@ -16,11 +16,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    data/qtdisplaymetricsrepository.cpp \
+    domain/displaymetricsrepository.cpp \
+    domain/exception.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    ui/openglwidget.cpp
 
 HEADERS += \
-    mainwindow.h
+    data/qtdisplaymetricsrepository.h \
+    domain/displaymetricsrepository.h \
+    domain/exception.h \
+    mainwindow.h \
+    ui/openglwidget.h
 
 FORMS += \
     mainwindow.ui
