@@ -12,6 +12,9 @@ std::vector<float> extractVerticesData(const Mesh& mesh)
         verticesData.push_back(it->position().x);
         verticesData.push_back(it->position().y);
         verticesData.push_back(it->position().z);
+
+        verticesData.push_back(it->uv().x);
+        verticesData.push_back(it->uv().y);
     }
     return verticesData;
 }

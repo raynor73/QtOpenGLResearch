@@ -11,7 +11,8 @@ OpenGLWidget::OpenGLWidget(QWidget* parent, float fpsLimit) :
     QOpenGLWidget(parent),
     m_fpsPeriod(1000 / fpsLimit),
     m_openGLGeometryRepository(OpenGLGeometryRepository(m_openGLErrorDetector)),
-    m_openGLShadersRepository(OpenGLShadersRepository(m_openGLErrorDetector))
+    m_openGLShadersRepository(OpenGLShadersRepository(m_openGLErrorDetector)),
+    m_openGLTexturesRepository(OpenGLTexturesRepository(m_openGLErrorDetector))
 {}
 
 void OpenGLWidget::initializeGL()
@@ -36,10 +37,10 @@ void OpenGLWidget::initScene()
     glClearColor(0, .5, 0, 1);
 
     std::vector<Vertex> vertices;
-    vertices.push_back(Vertex(Vector3f(-0.5, -0.5, 0.0)));
-    vertices.push_back(Vertex(Vector3f( 0.5, -0.5, 0.0)));
-    vertices.push_back(Vertex(Vector3f( 0.5,  0.5, 0.0)));
-    vertices.push_back(Vertex(Vector3f(-0.5,  0.5, 0.0)));
+    vertices.push_back(Vertex(Vector3f(-0.5, -0.5, 0.0), Vector2f(0, 0)));
+    vertices.push_back(Vertex(Vector3f( 0.5, -0.5, 0.0), Vector2f(1, 0)));
+    vertices.push_back(Vertex(Vector3f( 0.5,  0.5, 0.0), Vector2f(1, 1)));
+    vertices.push_back(Vertex(Vector3f(-0.5,  0.5, 0.0), Vector2f(0, 1)));
 
     std::vector<uint16_t> indices;
     indices.push_back(0);
@@ -67,6 +68,8 @@ void OpenGLWidget::initScene()
                 m_openGLShadersRepository.findVertexShader("vertex_shader"),
                 m_openGLShadersRepository.findFragmentShader("fragment_shader")
     );
+
+    m_openGLTexturesRepository.createTexture("bricks", "://resources/textures/bricks.jpg");
 
     m_openGLErrorDetector.dispatchOpenGLErrors("OpenGLWidget::initScene");
 }
@@ -97,6 +100,11 @@ void OpenGLWidget::render()
     );
     glEnableVertexAttribArray(shaderProgramInfo.positionAttribute());
 
+    auto textureInfo = m_openGLTexturesRepository.findTexture("bricks");
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textureInfo.texture());
+    glUniform1i(shaderProgramInfo.textureUniform(), 0);
+
     glDrawElements(
         GL_POLYGON,
         iboInfo.numberOfIndices(),
@@ -108,6 +116,7 @@ void OpenGLWidget::render()
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
     m_openGLErrorDetector.dispatchOpenGLErrors("OpenGLWidget::render");
 }

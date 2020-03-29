@@ -11,11 +11,15 @@ public:
 
     uint32_t shaderProgram() const;
     uint32_t positionAttribute() const;
+    uint32_t uvAttribute() const;
+    uint32_t textureUniform() const;
     ShaderProgramInfo& operator=(const ShaderProgramInfo& other);
 
 private:
     uint32_t m_shaderProgram;
     uint32_t m_positionAttribute;
+    uint32_t m_uvAttribute;
+    uint32_t m_textureUniform;
 };
 
 #endif // SHADERPROGRAMINFO_H

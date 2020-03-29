@@ -7,6 +7,7 @@
 #include "domain/mesh.h"
 #include "data/openglgeometryrepository.h"
 #include "data/openglshadersrepository.h"
+#include "data/assets/opengltexturesrepository.h"
 #include "data/openglerrordetector.h"
 
 class OpenGLWidget : public QOpenGLWidget
@@ -30,6 +31,7 @@ private:
     OpenGLErrorDetector m_openGLErrorDetector;
     OpenGLGeometryRepository m_openGLGeometryRepository;
     OpenGLShadersRepository m_openGLShadersRepository;
+    OpenGLTexturesRepository m_openGLTexturesRepository;
 
     void initScene();
     void render();

@@ -1,6 +1,10 @@
-attribute vec4 position;
+attribute vec4 positionAttribute;
+attribute vec2 uvAttribute;
+
+varying vec2 uvVarying;
 
 void main(void)
 {
-    gl_Position = position;
+    uvVarying = uvAttribute;
+    gl_Position = positionAttribute;
 }

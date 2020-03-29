@@ -16,12 +16,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    data/assets/opengltexturesrepository.cpp \
+    data/assets/textureinfo.cpp \
     data/iboinfo.cpp \
     data/openglerrordetector.cpp \
     data/openglgeometryrepository.cpp \
     data/openglshadersrepository.cpp \
     data/qtdisplaymetricsrepository.cpp \
     data/shaderprograminfo.cpp \
+    domain/assets/texturesrepository.cpp \
     domain/displaymetricsrepository.cpp \
     domain/exception.cpp \
     domain/geometryrepository.cpp \
@@ -37,12 +40,15 @@ SOURCES += \
     utils.cpp
 
 HEADERS += \
+    data/assets/opengltexturesrepository.h \
+    data/assets/textureinfo.h \
     data/iboinfo.h \
     data/openglerrordetector.h \
     data/openglgeometryrepository.h \
     data/openglshadersrepository.h \
     data/qtdisplaymetricsrepository.h \
     data/shaderprograminfo.h \
+    domain/assets/texturesrepository.h \
     domain/displaymetricsrepository.h \
     domain/exception.h \
     domain/geometryrepository.h \
