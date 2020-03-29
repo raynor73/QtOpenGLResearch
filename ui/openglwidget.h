@@ -32,7 +32,9 @@ private:
 
     Mesh m_mesh;
     glm::vec3 m_meshEulerAngles;
+    glm::vec3 m_meshPosition;
     float m_meshRotationSpeed = 1; // rad per second
+    float m_meshMovementSpeed = 1;
 
     OpenGLErrorDetector m_openGLErrorDetector;
     UserInput m_userInput;

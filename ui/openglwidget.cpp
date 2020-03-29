@@ -130,7 +130,8 @@ void OpenGLWidget::render()
 
     auto viewMatrix = glm::lookAt(glm::vec3(0, 0, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 
-    auto modelMatrix = glm::rotate(glm::mat4(1), m_meshEulerAngles.x, glm::vec3(1, 0, 0));
+    auto modelMatrix = glm::translate(glm::mat4(1), m_meshPosition);
+    modelMatrix = glm::rotate(modelMatrix, m_meshEulerAngles.x, glm::vec3(1, 0, 0));
     modelMatrix = glm::rotate(modelMatrix, m_meshEulerAngles.y, glm::vec3(0, 1, 0));
     modelMatrix = glm::rotate(modelMatrix, m_meshEulerAngles.z, glm::vec3(0, 0, 1));
 
@@ -159,4 +160,6 @@ void OpenGLWidget::dispatchInput(float dt)
     m_meshEulerAngles.x += m_meshController.xRotationFactor() * m_meshRotationSpeed * dt;
     m_meshEulerAngles.y += m_meshController.yRotationFactor() * m_meshRotationSpeed * dt;
     m_meshEulerAngles.z += m_meshController.zRotationFactor() * m_meshRotationSpeed * dt;
+
+    m_meshPosition.z += m_meshController.movementFactor() * m_meshMovementSpeed * dt;
 }

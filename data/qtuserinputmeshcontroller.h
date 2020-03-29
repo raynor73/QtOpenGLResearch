@@ -17,6 +17,7 @@ public:
     virtual float xRotationFactor() const override { return m_xRotationFactor; };
     virtual float yRotationFactor() const override { return m_yRotationFactor; };
     virtual float zRotationFactor() const override { return m_zRotationFactor; };
+    virtual float movementFactor() const override { return m_movementFactor; };
 
 public slots:
     void onKeyEvent(QKeyEvent);
@@ -28,6 +29,8 @@ private:
     float m_xRotationFactor = 0;
     float m_yRotationFactor = 0;
     float m_zRotationFactor = 0;
+
+    float m_movementFactor = 0;
 };
 
 #endif // QTUSERINPUTMESHCONTROLLER_H

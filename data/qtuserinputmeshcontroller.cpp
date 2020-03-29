@@ -62,6 +62,20 @@ void QtUserInputMeshController::onKeyEvent(QKeyEvent event)
         else
             m_yRotationFactor += 1;
         break;
+
+    case Qt::Key_Up:
+        if (event.type() == QEvent::KeyPress)
+            m_movementFactor -= 1;
+        else
+            m_movementFactor += 1;
+        break;
+
+    case Qt::Key_Down:
+        if (event.type() == QEvent::KeyPress)
+            m_movementFactor += 1;
+        else
+            m_movementFactor -= 1;
+        break;
     }
 }
 
