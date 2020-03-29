@@ -4,6 +4,10 @@
 #include <QObject>
 #include <QElapsedTimer>
 #include <QOpenGLWidget>
+#include "domain/mesh.h"
+#include "data/openglgeometryrepository.h"
+#include "data/openglshadersrepository.h"
+#include "data/openglerrordetector.h"
 
 class OpenGLWidget : public QOpenGLWidget
 {
@@ -21,6 +25,13 @@ private:
     int m_fpsPeriod;
     QElapsedTimer m_renderTimer;
 
+    Mesh m_mesh;
+
+    OpenGLErrorDetector m_openGLErrorDetector;
+    OpenGLGeometryRepository m_openGLGeometryRepository;
+    OpenGLShadersRepository m_openGLShadersRepository;
+
+    void initScene();
     void render();
 };
 
