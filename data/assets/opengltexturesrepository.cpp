@@ -1,6 +1,7 @@
 #include <QOpenGLFunctions_4_5_Core>
 #include <QImage>
 #include <sstream>
+#include "glm/glm.hpp"
 #include "domain/exception.h"
 #include "opengltexturesrepository.h"
 
@@ -36,30 +37,15 @@ void OpenGLTexturesRepository::createTexture(const std::string& name, const std:
         messageBuilder << "Error loading texturev " << name;
         throw Exception(messageBuilder.str());
     }
-
-    /*val bitmapStream = context.assets.open(path)
-    val originalBitmap = BitmapFactory.decodeStream(bitmapStream)
-    val flipVerticallyMatrix = Matrix()
-    flipVerticallyMatrix.postScale(1f, -1f, originalBitmap.width / 2f, originalBitmap.height / 2f)
-    val bitmap = Bitmap.createBitmap(
-        originalBitmap,
-        0,
-        0,
-        originalBitmap.width,
-        originalBitmap.height,
-        flipVerticallyMatrix,
-        true
-    )
-    originalBitmap.recycle()
-    bitmapStream.close()*/
+    image = image.convertToFormat(QImage::Format_RGBA8888);
+    image = image.mirrored(false, true);
 
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width(), image.height(), 0, GL_RGBA, GL_BYTE, image.bits());
-    //GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0)
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width(), image.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.bits());
 
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);

@@ -1,26 +1,25 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
-#include "domain/math/vector3f.h"
-#include "domain/math/vector2f.h"
+#include "glm/glm.hpp"
 
 class Vertex
 {
 public:
-    Vertex(const Vector3f& position, const Vector2f& uv);
+    Vertex(const glm::vec3& position, const glm::vec2& uv);
 
-    const Vector3f& position() const;
-    void setPosition(const Vector3f& position);
-    const Vector2f& uv() const;
-    void setUv(const Vector2f& uv);
+    const glm::vec3& position() const { return m_position; }
+    void setPosition(const glm::vec3& position) { m_position = position; }
+    const glm::vec2& uv() const { return m_uv; }
+    void setUv(const glm::vec2& uv) { m_uv = uv; }
 
     static const int VERTEX_COORDINATE_COMPONENTS = 3;
     static const int VERTEX_UV_COMPONENTS = 2;
     static const int VERTEX_COMPONENTS = VERTEX_COORDINATE_COMPONENTS + VERTEX_UV_COMPONENTS;
 
 private:
-    Vector3f m_position;
-    Vector2f m_uv;
+    glm::vec3 m_position;
+    glm::vec2 m_uv;
 };
 
 #endif // VERTEX_H

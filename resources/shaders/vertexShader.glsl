@@ -1,10 +1,12 @@
-attribute vec4 positionAttribute;
+attribute vec3 positionAttribute;
 attribute vec2 uvAttribute;
+
+uniform mat4 mvpMatrixUniform;
 
 varying vec2 uvVarying;
 
 void main(void)
 {
     uvVarying = uvAttribute;
-    gl_Position = positionAttribute;
+    gl_Position = mvpMatrixUniform * vec4(positionAttribute, 1.0);
 }

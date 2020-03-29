@@ -23,16 +23,15 @@ SOURCES += \
     data/openglgeometryrepository.cpp \
     data/openglshadersrepository.cpp \
     data/qtdisplaymetricsrepository.cpp \
+    data/qtuserinputmeshcontroller.cpp \
     data/shaderprograminfo.cpp \
+    data/userinput.cpp \
     domain/assets/texturesrepository.cpp \
     domain/displaymetricsrepository.cpp \
     domain/exception.cpp \
     domain/geometryrepository.cpp \
-    domain/math/matrix4f.cpp \
-    domain/math/quaternion.cpp \
-    domain/math/vector2f.cpp \
-    domain/math/vector3f.cpp \
     domain/mesh.cpp \
+    domain/meshcontroller.cpp \
     domain/vertex.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -47,16 +46,15 @@ HEADERS += \
     data/openglgeometryrepository.h \
     data/openglshadersrepository.h \
     data/qtdisplaymetricsrepository.h \
+    data/qtuserinputmeshcontroller.h \
     data/shaderprograminfo.h \
+    data/userinput.h \
     domain/assets/texturesrepository.h \
     domain/displaymetricsrepository.h \
     domain/exception.h \
     domain/geometryrepository.h \
-    domain/math/matrix4f.h \
-    domain/math/quaternion.h \
-    domain/math/vector2f.h \
-    domain/math/vector3f.h \
     domain/mesh.h \
+    domain/meshcontroller.h \
     domain/vertex.h \
     mainwindow.h \
     ui/openglwidget.h \
