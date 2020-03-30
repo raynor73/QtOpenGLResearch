@@ -12,6 +12,8 @@
 OpenGLWidget::OpenGLWidget(QWidget* parent, float fpsLimit) :
     QOpenGLWidget(parent),
     m_fpsPeriod(1000 / fpsLimit),
+    m_meshEulerAngles(glm::vec3(0)),
+    m_meshPosition(glm::vec3(0)),
     m_openGLGeometryRepository(OpenGLGeometryRepository(m_openGLErrorDetector)),
     m_openGLShadersRepository(OpenGLShadersRepository(m_openGLErrorDetector)),
     m_openGLTexturesRepository(OpenGLTexturesRepository(m_openGLErrorDetector)),
