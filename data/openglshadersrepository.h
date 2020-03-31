@@ -17,6 +17,7 @@ public:
     void createVertexShader(const std::string& name, const std::string& source);
     void createFragmentShader(const std::string& name, const std::string& source);
     void createShaderProgram(const std::string& name, uint32_t vertexShader, uint32_t fragmentShader);
+    void removeAllShadersAndPrograms();
 
 private:
     OpenGLErrorDetector& m_openGLErrorDetector;

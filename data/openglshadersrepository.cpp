@@ -97,3 +97,23 @@ void OpenGLShadersRepository::createShaderProgram(
     m_openGLErrorDetector.dispatchShaderLinkingError(shaderProgram, "OpenGLShadersRepository::createShaderProgram");
     m_openGLErrorDetector.dispatchOpenGLErrors("OpenGLShadersRepository::createShaderProgram");
 }
+
+void OpenGLShadersRepository::removeAllShadersAndPrograms()
+{
+    for (auto it = m_shaderPrograms.begin(); it != m_shaderPrograms.end(); ++it) {
+        glDeleteProgram(it->second.shaderProgram());
+    }
+
+    for (auto it = m_vertexShaders.begin(); it != m_vertexShaders.end(); ++it) {
+        glDeleteShader(it->second);
+    }
+
+    for (auto it = m_fragmentShaders.begin(); it != m_fragmentShaders.end(); ++it) {
+        glDeleteShader(it->second);
+    }
+
+    m_shaderPrograms.clear();
+    m_vertexShaders.clear();
+    m_fragmentShaders.clear();
+}
+

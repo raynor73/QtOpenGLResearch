@@ -21,6 +21,8 @@ public:
     virtual void removeTexture(const std::string& name) override;
     virtual void removeAllTextures() override;
 
+    void createTextureArray(const std::string& name, const std::vector<std::string>& paths);
+
 private:
     OpenGLErrorDetector& m_openGLErrorDetector;
     std::map<std::string, TextureInfo> m_textures;

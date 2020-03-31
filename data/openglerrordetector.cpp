@@ -27,13 +27,14 @@ void OpenGLErrorDetector::dispatchOpenGLErrors(const std::string& locationName)
         if (m_openGLErrorMap.count(error) > 0) {
             errorDescriptionBuilder << m_openGLErrorMap[error];
         } else {
-            errorDescriptionBuilder << "Unknown OpenGL error: " << error;
+            errorDescriptionBuilder << "Unknown OpenGL error: " << error << "\n";
         }
         std::cerr
                 << "OpenGL error detected at "
                 << locationName
                 << " "
-                << errorDescriptionBuilder.str();
+                << errorDescriptionBuilder.str()
+                << "\n";
         error = glGetError();
     }
 }
@@ -51,7 +52,8 @@ void OpenGLErrorDetector::dispatchShaderCompilationError(int shader, const std::
                 << "OpenGL shader compilation failure detected at "
                 << locationName
                 << " "
-                << infoLogBuffer;
+                << infoLogBuffer
+                << "\n";
     }
 }
 
@@ -63,7 +65,8 @@ void OpenGLErrorDetector::dispatchShaderLinkingError(int shader, const std::stri
         m_isOpenGLErrorDetected = true;
         std::cerr
                 << "OpenGL shader linking failure detected at "
-                << locationName;
+                << locationName
+                << "\n";
     }
 }
 
@@ -76,8 +79,13 @@ void OpenGLErrorDetector::checkFramebufferStatus(const std::string& locationName
         if (m_framebufferStatusMap.count(framebufferStatus) > 0) {
             statusDescriptionBuilder << m_framebufferStatusMap[framebufferStatus];
         } else {
-            statusDescriptionBuilder << "Unknown OpenGL framebuffer status: " << framebufferStatus;
+            statusDescriptionBuilder << "Unknown OpenGL framebuffer status: " << framebufferStatus << "\n";
         }
-        std::cerr << "Incomplete framebuffer status at " << locationName << " " << statusDescriptionBuilder.str();
+        std::cerr
+                << "Incomplete framebuffer status at "
+                << locationName
+                << " "
+                << statusDescriptionBuilder.str()
+                << "\n";
     }
 }

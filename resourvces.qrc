@@ -3,5 +3,15 @@
         <file>resources/shaders/vertexShader.glsl</file>
         <file>resources/shaders/fragmentShader.glsl</file>
         <file>resources/textures/bricks.jpg</file>
+        <file>resources/textures/0.png</file>
+        <file>resources/textures/1.png</file>
+        <file>resources/textures/2.png</file>
+        <file>resources/textures/3.png</file>
+        <file>resources/textures/4.png</file>
+        <file>resources/textures/5.png</file>
+        <file>resources/textures/6.png</file>
+        <file>resources/textures/7.png</file>
+        <file>resources/textures/8.png</file>
+        <file>resources/textures/9.png</file>
     </qresource>
 </RCC>

@@ -26,6 +26,7 @@ SOURCES += \
     data/qtuserinputmeshcontroller.cpp \
     data/shaderprograminfo.cpp \
     data/userinput.cpp \
+    data/vaoinfo.cpp \
     domain/assets/texturesrepository.cpp \
     domain/displaymetricsrepository.cpp \
     domain/exception.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     data/qtuserinputmeshcontroller.h \
     data/shaderprograminfo.h \
     data/userinput.h \
+    data/vaoinfo.h \
     domain/assets/texturesrepository.h \
     domain/displaymetricsrepository.h \
     domain/exception.h \

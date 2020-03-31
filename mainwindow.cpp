@@ -14,12 +14,20 @@ MainWindow::MainWindow(QWidget *parent)
     int displayHeight = displayMetricsRepository.height();
     setFixedSize(displayWidth, displayHeight);
 
+    QSurfaceFormat format;
+    format.setDepthBufferSize(24);
+    format.setStencilBufferSize(8);
+    format.setVersion(4, 1);
+    format.setProfile(QSurfaceFormat::CoreProfile);
+    QSurfaceFormat::setDefaultFormat(format);
+
     m_openglWidget = new OpenGLWidget(this, 60);
     m_openglWidget->setGeometry(0, 0, displayWidth, displayHeight);
 }
 
 MainWindow::~MainWindow()
 {
+    delete m_openglWidget;
     delete ui;
 }
 
