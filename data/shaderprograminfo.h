@@ -14,7 +14,8 @@ public:
     uint32_t uvAttribute() const;
     uint32_t textureUniform() const;
     uint32_t mvpMatrixUniform() const { return m_mvpMatrixUniform; };
-    ShaderProgramInfo& operator=(const ShaderProgramInfo& other);
+    uint32_t textureIndexUniform() const { return m_textureIndexUniform; };
+    //ShaderProgramInfo& operator=(const ShaderProgramInfo& other);
 
 private:
     uint32_t m_shaderProgram;
@@ -22,6 +23,7 @@ private:
     uint32_t m_uvAttribute;
     uint32_t m_textureUniform;
     uint32_t m_mvpMatrixUniform;
+    uint32_t m_textureIndexUniform;
 };
 
 #endif // SHADERPROGRAMINFO_H

@@ -8,10 +8,11 @@ ShaderProgramInfo::ShaderProgramInfo(uint32_t shaderProgram) :
     m_positionAttribute(glGetAttribLocation(m_shaderProgram, "positionAttribute")),
     m_uvAttribute(glGetAttribLocation(m_shaderProgram, "uvAttribute")),
     m_textureUniform(glGetUniformLocation(m_shaderProgram, "textureUniform")),
-    m_mvpMatrixUniform(glGetUniformLocation(m_shaderProgram, "mvpMatrixUniform"))
+    m_mvpMatrixUniform(glGetUniformLocation(m_shaderProgram, "mvpMatrixUniform")),
+    m_textureIndexUniform(glGetUniformLocation(m_shaderProgram, "textureIndexUniform"))
 {}
 
-ShaderProgramInfo& ShaderProgramInfo::operator=(const ShaderProgramInfo& other)
+/*ShaderProgramInfo& ShaderProgramInfo::operator=(const ShaderProgramInfo& other)
 {
     if (&other == this) {
         return *this;
@@ -24,7 +25,7 @@ ShaderProgramInfo& ShaderProgramInfo::operator=(const ShaderProgramInfo& other)
     m_mvpMatrixUniform = other.m_mvpMatrixUniform;
 
     return *this;
-}
+}*/
 
 uint32_t ShaderProgramInfo::shaderProgram() const
 {

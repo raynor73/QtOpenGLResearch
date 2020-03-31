@@ -34,8 +34,9 @@ void OpenGLWidget::paintGL()
 {
     m_renderTimer.start();
 
-    dispatchInput(m_dtTimer.nsecsElapsed() / 1e9);
-    render();
+    float dt = m_dtTimer.isValid() ? m_dtTimer.nsecsElapsed() / 1e9 : 0;
+    dispatchInput(dt);
+    render(dt);
 
     int delay = m_fpsPeriod - m_renderTimer.elapsed();
     QTimer::singleShot(delay > 0 ? delay : 1, this, SLOT(update()));
@@ -104,7 +105,7 @@ void OpenGLWidget::initScene()
     m_openGLErrorDetector.dispatchOpenGLErrors("OpenGLWidget::initScene");
 }
 
-void OpenGLWidget::render()
+void OpenGLWidget::render(float dt)
 {
     if (m_openGLErrorDetector.isOpenGLErrorDetected()) {
         return;
@@ -136,6 +137,9 @@ void OpenGLWidget::render()
     auto mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
     glUniformMatrix4fv(shaderProgramInfo.mvpMatrixUniform(), 1, false, glm::value_ptr(mvpMatrix));
 
+    glUniform1i(shaderProgramInfo.textureIndexUniform(), int(m_elapsedTime) % 10);
+    m_elapsedTime += dt;
+
     auto vaoInfo = m_openGLGeometryRepository.findVao("plane");
     glBindVertexArray(vaoInfo.vao());
     glDrawElements(
@@ -148,62 +152,6 @@ void OpenGLWidget::render()
     glBindVertexArray(0);
 
     m_openGLErrorDetector.dispatchOpenGLErrors("OpenGLWidget::render");
-
-    /*auto vbo = m_openGLGeometryRepository.findVbo("plane");
-    auto iboInfo = m_openGLGeometryRepository.findIbo("plane");
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboInfo.ibo());
-
-    glVertexAttribPointer(
-            1,
-            Vertex::VERTEX_UV_COMPONENTS,
-            GL_FLOAT,
-            false,
-            Vertex::VERTEX_COMPONENTS * sizeof (float),
-            reinterpret_cast <void *>(Vertex::VERTEX_COORDINATE_COMPONENTS * sizeof (float))
-    );
-    glEnableVertexAttribArray(1);
-
-    auto shaderProgramInfo = m_openGLShadersRepository.findShaderProgram("shader");
-    glUseProgram(shaderProgramInfo.shaderProgram());
-
-    auto textureInfo = m_openGLTexturesRepository.findTexture("numbers");
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, textureInfo.texture());
-    glUniform1i(shaderProgramInfo.textureUniform(), 0);
-
-    auto projectionMatrix = glm::perspective(
-                45.0f,
-                float(m_displayMetrixRepository.width()) / m_displayMetrixRepository.height(),
-                0.1f, 1000.f
-    );
-
-    auto viewMatrix = glm::lookAt(glm::vec3(0, 0, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-
-    auto modelMatrix = glm::translate(glm::mat4(1), m_meshPosition);
-    modelMatrix = glm::rotate(modelMatrix, m_meshEulerAngles.x, glm::vec3(1, 0, 0));
-    modelMatrix = glm::rotate(modelMatrix, m_meshEulerAngles.y, glm::vec3(0, 1, 0));
-    modelMatrix = glm::rotate(modelMatrix, m_meshEulerAngles.z, glm::vec3(0, 0, 1));
-
-    auto mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
-    glUniformMatrix4fv(shaderProgramInfo.mvpMatrixUniform(), 1, false, glm::value_ptr(mvpMatrix));
-
-    glDrawElements(
-        GL_POLYGON,
-        iboInfo.numberOfIndices(),
-        GL_UNSIGNED_SHORT,
-        0
-    );
-
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-    glBindTexture(GL_TEXTURE_2D, 0);
-
-    m_openGLErrorDetector.dispatchOpenGLErrors("OpenGLWidget::render");*/
 }
 
 void OpenGLWidget::dispatchInput(float dt)

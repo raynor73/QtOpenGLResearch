@@ -35,6 +35,7 @@ private:
     glm::vec3 m_meshPosition;
     float m_meshRotationSpeed = 1; // rad per second
     float m_meshMovementSpeed = 1;
+    float m_elapsedTime = 0;
 
     OpenGLErrorDetector m_openGLErrorDetector;
     UserInput m_userInput;
@@ -45,7 +46,7 @@ private:
     QtDisplayMetricsRepository m_displayMetrixRepository;
 
     void initScene();
-    void render();
+    void render(float dt);
     void dispatchInput(float dt);
 };
 
