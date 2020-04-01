@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QElapsedTimer>
 #include <QOpenGLWidget>
+#include <ode/ode.h>
 #include "glm/glm.hpp"
 #include "domain/mesh.h"
 #include "data/openglgeometryrepository.h"
@@ -44,6 +45,8 @@ private:
     OpenGLTexturesRepository m_openGLTexturesRepository;
     QtUserInputMeshController m_meshController;
     QtDisplayMetricsRepository m_displayMetrixRepository;
+
+    dWorldID m_world;
 
     void initScene();
     void render(float dt);

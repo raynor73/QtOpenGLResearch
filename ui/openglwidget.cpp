@@ -48,6 +48,10 @@ void OpenGLWidget::resizeGL(int, int) {}
 
 void OpenGLWidget::initScene()
 {
+    dInitODE2(0);
+    m_world = dWorldCreate();
+    dWorldSetGravity(m_world, 0, -9.8, 0);
+
     glClearColor(0, .5, 0, 1);
 
     std::vector<Vertex> vertices;

@@ -76,3 +76,8 @@ RESOURCES += \
 DISTFILES += \
     resources/shaders/fragmentShader.glsl \
     resources/shaders/vertexShader.glsl
+
+macx: LIBS += -L$$PWD/../../local/lib/ -lode.0.16.1
+
+INCLUDEPATH += $$PWD/../../local/include
+DEPENDPATH += $$PWD/../../local/include
