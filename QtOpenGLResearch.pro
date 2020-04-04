@@ -27,12 +27,20 @@ SOURCES += \
     data/shaderprograminfo.cpp \
     data/userinput.cpp \
     data/vaoinfo.cpp \
+    domain/assets/texturearraydata.cpp \
+    domain/assets/texturedata.cpp \
+    domain/assets/texturerepository2.cpp \
     domain/assets/texturesrepository.cpp \
     domain/displaymetricsrepository.cpp \
     domain/exception.cpp \
+    domain/game_object/gameobjectcomponent.cpp \
+    domain/game_object/gameobject.cpp \
+    domain/gameobjectshierarchycontainer.cpp \
     domain/geometryrepository.cpp \
     domain/mesh.cpp \
     domain/meshcontroller.cpp \
+    domain/renderingengine.cpp \
+    domain/transformationcomponent.cpp \
     domain/vertex.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -51,12 +59,20 @@ HEADERS += \
     data/shaderprograminfo.h \
     data/userinput.h \
     data/vaoinfo.h \
+    domain/assets/texturearraydata.h \
+    domain/assets/texturedata.h \
+    domain/assets/texturerepository2.h \
     domain/assets/texturesrepository.h \
     domain/displaymetricsrepository.h \
     domain/exception.h \
+    domain/game_object/gameobjectcomponent.h \
+    domain/game_object/gameobject.h \
+    domain/gameobjectshierarchycontainer.h \
     domain/geometryrepository.h \
     domain/mesh.h \
     domain/meshcontroller.h \
+    domain/renderingengine.h \
+    domain/transformationcomponent.h \
     domain/vertex.h \
     mainwindow.h \
     ui/openglwidget.h \

@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include "data/qtdisplaymetricsrepository.h"
 
 MainWindow::MainWindow(QWidget *parent)
