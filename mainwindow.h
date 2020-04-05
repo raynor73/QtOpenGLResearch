@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
-#include "ui/openglwidget.h"
+#include "ui/openglwidget2.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,6 +19,6 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    OpenGLWidget* m_openglWidget;
+    OpenGLWidget2* m_openglWidget;
 };
 #endif // MAINWINDOW_H

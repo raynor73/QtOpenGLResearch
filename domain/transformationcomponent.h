@@ -27,7 +27,6 @@ public:
     void setScale(const glm::vec3& scale);
 
     virtual const std::string& type() const override { return TYPE_NAME; };
-    virtual std::shared_ptr<GameObjectComponent> clone() override;
     virtual std::shared_ptr<GameObjectComponent> clone(const std::string& cloneName) override;
 
     static const std::string TYPE_NAME;

@@ -23,7 +23,7 @@ public:
     virtual void onAttach() {};
     virtual void onDetach() {};
 
-    virtual std::shared_ptr<GameObjectComponent> clone() = 0;
+    std::shared_ptr<GameObjectComponent> clone();
     virtual std::shared_ptr<GameObjectComponent> clone(const std::string& cloneName) = 0;
 
 protected:

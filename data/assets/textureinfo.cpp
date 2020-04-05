@@ -6,7 +6,7 @@ TextureInfo::TextureInfo() :
     m_height(0)
 {}
 
-TextureInfo::TextureInfo(uint32_t texture, int width, int height) :
+TextureInfo::TextureInfo(GLuint texture, int width, int height) :
     m_texture(texture),
     m_width(width),
     m_height(height)

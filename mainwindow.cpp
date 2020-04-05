@@ -20,7 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     format.setProfile(QSurfaceFormat::CoreProfile);
     QSurfaceFormat::setDefaultFormat(format);
 
-    m_openglWidget = new OpenGLWidget(this, 60);
+    //m_openglWidget = new OpenGLWidget(this, 60);
+    m_openglWidget = new OpenGLWidget2(this, 60);
     m_openglWidget->setGeometry(0, 0, displayWidth, displayHeight);
 }
 

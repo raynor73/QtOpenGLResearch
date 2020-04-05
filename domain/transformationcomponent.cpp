@@ -17,13 +17,6 @@ TransformationComponent::TransformationComponent(
     m_scale(scale)
 {}
 
-std::shared_ptr<GameObjectComponent> TransformationComponent::clone()
-{
-    std::stringstream cloneNameBuilder;
-    cloneNameBuilder << m_name << nextCloneNamePostfix();
-    return clone(cloneNameBuilder.str());
-}
-
 std::shared_ptr<GameObjectComponent> TransformationComponent::clone(const std::string& cloneName)
 {
     return std::shared_ptr<GameObjectComponent>(

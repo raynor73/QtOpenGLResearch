@@ -18,12 +18,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     data/assets/opengltexturesrepository.cpp \
     data/assets/textureinfo.cpp \
+    data/framebufferinfo.cpp \
     data/iboinfo.cpp \
+    data/lightsources.cpp \
+    data/meshrenderercomponent.cpp \
     data/openglerrordetector.cpp \
     data/openglgeometryrepository.cpp \
     data/openglshadersrepository.cpp \
     data/qtdisplaymetricsrepository.cpp \
+    data/qttimerepository.cpp \
     data/qtuserinputmeshcontroller.cpp \
+    data/researchrenderingengine.cpp \
     data/shaderprograminfo.cpp \
     data/userinput.cpp \
     data/vaoinfo.cpp \
@@ -31,31 +36,41 @@ SOURCES += \
     domain/assets/texturedata.cpp \
     domain/assets/texturerepository2.cpp \
     domain/assets/texturesrepository.cpp \
+    domain/cameracomponent.cpp \
     domain/displaymetricsrepository.cpp \
     domain/exception.cpp \
     domain/game_object/gameobjectcomponent.cpp \
     domain/game_object/gameobject.cpp \
     domain/gameobjectshierarchycontainer.cpp \
     domain/geometryrepository.cpp \
+    domain/light_sources/directionallight.cpp \
     domain/mesh.cpp \
     domain/meshcontroller.cpp \
     domain/renderingengine.cpp \
+    domain/scene.cpp \
+    domain/timerepository.cpp \
     domain/transformationcomponent.cpp \
     domain/vertex.cpp \
     main.cpp \
     mainwindow.cpp \
     ui/openglwidget.cpp \
+    ui/openglwidget2.cpp \
     utils.cpp
 
 HEADERS += \
     data/assets/opengltexturesrepository.h \
     data/assets/textureinfo.h \
+    data/framebufferinfo.h \
     data/iboinfo.h \
+    data/lightsources.h \
+    data/meshrenderercomponent.h \
     data/openglerrordetector.h \
     data/openglgeometryrepository.h \
     data/openglshadersrepository.h \
     data/qtdisplaymetricsrepository.h \
+    data/qttimerepository.h \
     data/qtuserinputmeshcontroller.h \
+    data/researchrenderingengine.h \
     data/shaderprograminfo.h \
     data/userinput.h \
     data/vaoinfo.h \
@@ -63,19 +78,25 @@ HEADERS += \
     domain/assets/texturedata.h \
     domain/assets/texturerepository2.h \
     domain/assets/texturesrepository.h \
+    domain/cameracomponent.h \
+    domain/constants.h \
     domain/displaymetricsrepository.h \
     domain/exception.h \
     domain/game_object/gameobjectcomponent.h \
     domain/game_object/gameobject.h \
     domain/gameobjectshierarchycontainer.h \
     domain/geometryrepository.h \
+    domain/light_sources/directionallight.h \
     domain/mesh.h \
     domain/meshcontroller.h \
     domain/renderingengine.h \
+    domain/scene.h \
+    domain/timerepository.h \
     domain/transformationcomponent.h \
     domain/vertex.h \
     mainwindow.h \
     ui/openglwidget.h \
+    ui/openglwidget2.h \
     utils.h
 
 FORMS += \
@@ -94,6 +115,11 @@ DISTFILES += \
     resources/shaders/vertexShader.glsl
 
 macx: LIBS += -L$$PWD/../../local/lib/ -lode.0.16.1
+
+INCLUDEPATH += $$PWD/../../local/include
+DEPENDPATH += $$PWD/../../local/include
+
+macx: LIBS += -L$$PWD/../../local/lib/ -lassimp.5.0.0
 
 INCLUDEPATH += $$PWD/../../local/include
 DEPENDPATH += $$PWD/../../local/include

@@ -2,21 +2,22 @@
 #define TEXTUREINFO_H
 
 #include <cstdlib>
+#include <QOpenGLFunctions_4_5_Core>
 
 class TextureInfo
 {
 public:
     TextureInfo();
-    TextureInfo(uint32_t texture, int width, int height);
+    TextureInfo(GLuint texture, int width, int height);
 
-    uint32_t texture() const { return m_texture; }
+    GLuint texture() const { return m_texture; }
     int width() const { return m_width; }
     int height() const { return m_height; }
 
     TextureInfo& operator=(const TextureInfo& other);
 
 private:
-    uint32_t m_texture;
+    GLuint m_texture;
     int m_width;
     int m_height;
 };
