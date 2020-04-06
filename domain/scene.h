@@ -13,9 +13,11 @@ public:
 
     virtual void onUpdate();
 
+protected:
+    std::shared_ptr<GameObject> m_rootGameObject;
+
 private:
     GameObjectsHierarchyContainer& m_gameObjectsHierarchyContainer;
-    std::shared_ptr<GameObject> m_rootGameObject;
 };
 
 #endif // SCENE_H

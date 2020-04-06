@@ -5,7 +5,7 @@
 OpenGLWidget2::OpenGLWidget2(QWidget* parent, float fpsLimit) :
     QOpenGLWidget(parent),
     m_fpsPeriod(1000 / fpsLimit),
-    m_renderingEngine(m_displayMetrixRepository, m_openGLErrorDetector, m_gameObjectsHierarchyContainer)
+    m_renderingEngine(m_gameObjectsHierarchyContainer, m_displayMetrixRepository, m_openGLErrorDetector)
 {}
 
 void OpenGLWidget2::initializeGL()

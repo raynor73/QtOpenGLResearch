@@ -51,6 +51,7 @@ SOURCES += \
     domain/meshcontroller.cpp \
     domain/renderingengine.cpp \
     domain/scene.cpp \
+    domain/scenes/researchscene.cpp \
     domain/timerepository.cpp \
     domain/transformationcomponent.cpp \
     domain/vertex.cpp \
@@ -97,6 +98,7 @@ HEADERS += \
     domain/meshcontroller.h \
     domain/renderingengine.h \
     domain/scene.h \
+    domain/scenes/researchscene.h \
     domain/timerepository.h \
     domain/transformationcomponent.h \
     domain/vertex.h \

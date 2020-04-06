@@ -8,10 +8,11 @@ void hierarchyReportCallback(GameObject& gameObject, void* userData)
 }
 
 ResearchRenderingEngine::ResearchRenderingEngine(
+        GameObjectsHierarchyContainer& gameObjectsHierarchyContainer,
         DisplayMetricsRepository& displayMetricsRepository,
-        OpenGLErrorDetector& openGLErrorDetector,
-        GameObjectsHierarchyContainer& gameObjectsHierarchyContainer
+        OpenGLErrorDetector& openGLErrorDetector
 ) :
+    RenderingEngine(gameObjectsHierarchyContainer),
     m_displayMetricsRepository(displayMetricsRepository),
     m_openGLErrorDetector(openGLErrorDetector),
     m_gameObjectsHierarchyContainer(gameObjectsHierarchyContainer)
@@ -80,6 +81,7 @@ void ResearchRenderingEngine::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     popOpenGLState();
+    // TODO Clean reported components
 }
 
 void ResearchRenderingEngine::pushOpenGLState(const OpenGLState& state)
@@ -92,7 +94,6 @@ void ResearchRenderingEngine::popOpenGLState()
 {
     m_openGLStateStack.pop();
     if (m_openGLStateStack.size() > 0) {
-        //throw Exception("No state to apply in OpenGL state stack");
         applyOpenGLState(m_openGLStateStack.top());
     }
 }

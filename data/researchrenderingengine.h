@@ -12,9 +12,9 @@ class ResearchRenderingEngine : public RenderingEngine
 {
 public:
     ResearchRenderingEngine(
+            GameObjectsHierarchyContainer& gameObjectsHierarchyContainer,
             DisplayMetricsRepository& displayMetrixReposotory,
-            OpenGLErrorDetector& openGLErrorDetector,
-            GameObjectsHierarchyContainer& gameObjectsHierarchyContainer
+            OpenGLErrorDetector& openGLErrorDetector
     );
     ~ResearchRenderingEngine();
 
