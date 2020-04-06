@@ -4,10 +4,12 @@
 #include <QObject>
 #include <QOpenGLWidget>
 #include <QElapsedTimer>
+#include <memory>
 #include "data/openglerrordetector.h"
 #include "data/userinput.h"
 #include "data/qtdisplaymetricsrepository.h"
 #include "data/researchrenderingengine.h"
+#include "domain/scenes/researchscene.h"
 
 class OpenGLWidget2 : public QOpenGLWidget
 {
@@ -30,6 +32,8 @@ private:
     QtDisplayMetricsRepository m_displayMetrixRepository;
     GameObjectsHierarchyContainer m_gameObjectsHierarchyContainer;
     ResearchRenderingEngine m_renderingEngine;
+
+    std::shared_ptr<ResearchScene> m_scene;
 };
 
 #endif // OPENGLWIDGET2_H

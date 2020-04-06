@@ -20,6 +20,11 @@ Scene::~Scene()
     m_gameObjectsHierarchyContainer.setRootGameObject(std::shared_ptr<GameObject>());
 }
 
+void Scene::onStart()
+{
+    m_rootGameObject->onStart();
+}
+
 void Scene::onUpdate()
 {
     m_rootGameObject->onUpdate();

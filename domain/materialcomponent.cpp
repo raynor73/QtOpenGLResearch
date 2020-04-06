@@ -4,7 +4,7 @@ const std::string MaterialComponent::TYPE_NAME = "MaterialComponent";
 
 MaterialComponent::MaterialComponent(
         const std::string& name,
-        const std::string& textureName,
+        std::shared_ptr<std::string> textureName,
         const glm::vec4& diffuseColor,
         bool isDoubleSided,
         bool isWireframe,
@@ -15,7 +15,7 @@ MaterialComponent::MaterialComponent(
         bool isSprite
 ) :
     GameObjectComponent(name),
-    m_textureName(textureName),
+    m_textureName(std::make_shared<std::string>(textureName->c_str())),
     m_diffuseColor(diffuseColor),
     m_isDoubleSided(isDoubleSided),
     m_isWireframe(isWireframe),

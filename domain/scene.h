@@ -11,6 +11,7 @@ public:
     Scene(GameObjectsHierarchyContainer& gameObjectsHierarchyContainer);
     virtual ~Scene();
 
+    virtual void onStart();
     virtual void onUpdate();
 
 protected:

@@ -2,6 +2,7 @@
 #define MATERIALCOMPONENT_H
 
 #include <string>
+#include <memory>
 #include "glm/glm.hpp"
 #include "domain/game_object/gameobjectcomponent.h"
 
@@ -10,19 +11,19 @@ class MaterialComponent : public GameObjectComponent
 public:
     MaterialComponent(
             const std::string& name,
-            const std::string& textureName,
+            std::shared_ptr<std::string> textureName,
             const glm::vec4& diffuseColor,
-            bool isDoubleSided,
-            bool isWireframe,
-            bool isUnlit,
-            bool isTranslucent,
-            bool castShadows,
-            bool receiveShadows,
-            bool isSprite
+            bool isDoubleSided = false,
+            bool isWireframe = false ,
+            bool isUnlit = false ,
+            bool isTranslucent = false ,
+            bool castShadows = true,
+            bool receiveShadows = true,
+            bool isSprite = false
     );
 
-    const std::string& textureName() const { return m_textureName; }
-    void setTextureName(const std::string& textureName) { m_textureName = textureName; }
+    std::shared_ptr<const std::string> textureName() const { return m_textureName; }
+    void setTextureName(std::shared_ptr<std::string> textureName) { m_textureName = std::make_shared<std::string>(textureName->c_str()); }
     const glm::vec4& diffuseColor() const { return m_diffuseColor; }
     void setDiffuseColor(const glm::vec4& diffuseColor) { m_diffuseColor = diffuseColor; }
     bool isDoubleSided() const { return m_isDoubleSided; }
@@ -46,7 +47,7 @@ public:
     static const std::string TYPE_NAME;
 
 private:
-    std::string m_textureName;
+    std::shared_ptr<std::string> m_textureName;
     glm::vec4 m_diffuseColor;
     bool m_isDoubleSided;
     bool m_isWireframe;
