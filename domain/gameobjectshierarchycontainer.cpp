@@ -3,10 +3,6 @@
 #include "domain/game_object/gameobject.h"
 #include "gameobjectshierarchycontainer.h"
 
-GameObjectsHierarchyContainer::GameObjectsHierarchyContainer(GameObject& rootGameObject) :
-    m_rootGameObject(rootGameObject)
-{}
-
 void GameObjectsHierarchyContainer::registerReportCallback(void (*callback)(GameObject&, void*), void* userData)
 {
     m_reportCallbacksWithUserData[callback] = userData;
@@ -19,8 +15,12 @@ void GameObjectsHierarchyContainer::unregisterReportCallbck(void (*callback)(Gam
 
 void GameObjectsHierarchyContainer::onUpdate()
 {
+    if (!m_rootGameObject) {
+        return;
+    }
+
     std::queue<std::shared_ptr<GameObject>> gameObjectsQueue;
-    gameObjectsQueue.push(std::make_shared<GameObject>(m_rootGameObject));
+    gameObjectsQueue.push(m_rootGameObject);
 
     do {
         auto currentGameObject = gameObjectsQueue.front();

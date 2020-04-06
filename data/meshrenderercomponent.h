@@ -5,13 +5,14 @@
 #include "domain/cameracomponent.h"
 #include "data/framebufferinfo.h"
 #include "data/lightsources.h"
+#include "data/shaderprograminfo.h"
 
 class MeshRendererComponent : public GameObjectComponent
 {
 public:
     MeshRendererComponent(const std::string& name);
 
-    void render(CameraComponent& camera, const LightSources& lightSources, FrameBufferInfo& renderTarget);
+    void render(const ShaderProgramInfo& shaderProgramInfo, CameraComponent& camera, const LightSources& lightSources);
 
     virtual const std::string& type() const override;
     virtual std::shared_ptr<GameObjectComponent> clone(const std::string& cloneName) override;

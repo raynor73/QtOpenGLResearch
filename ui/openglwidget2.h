@@ -6,10 +6,8 @@
 #include <QElapsedTimer>
 #include "data/openglerrordetector.h"
 #include "data/userinput.h"
-#include "data/openglgeometryrepository.h"
-#include "data/openglshadersrepository.h"
-#include "data/assets/opengltexturesrepository.h"
 #include "data/qtdisplaymetricsrepository.h"
+#include "data/researchrenderingengine.h"
 
 class OpenGLWidget2 : public QOpenGLWidget
 {
@@ -29,11 +27,9 @@ private:
 
     OpenGLErrorDetector m_openGLErrorDetector;
     UserInput m_userInput;
-    OpenGLGeometryRepository m_openGLGeometryRepository;
-    OpenGLShadersRepository m_openGLShadersRepository;
-    OpenGLTexturesRepository m_openGLTexturesRepository;
     QtDisplayMetricsRepository m_displayMetrixRepository;
-
+    GameObjectsHierarchyContainer m_gameObjectsHierarchyContainer;
+    ResearchRenderingEngine m_renderingEngine;
 };
 
 #endif // OPENGLWIDGET2_H

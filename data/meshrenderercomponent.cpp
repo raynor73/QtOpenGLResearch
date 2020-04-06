@@ -1,9 +1,23 @@
+#include <sstream>
+#include "domain/exception.h"
 #include "meshrenderercomponent.h"
 
 const std::string MeshRendererComponent::TYPE_NAME = "TransformationComponent";
 
-MeshRendererComponent::MeshRendererComponent(const std::string& name) : GameObjectComponent(name)
+MeshRendererComponent::MeshRendererComponent(const std::string& name) : GameObjectComponent(name) {}
+
+void MeshRendererComponent::render(
+        const ShaderProgramInfo& shaderProgramInfo,
+        CameraComponent& camera,
+        const LightSources& lightSources
+)
 {
+    auto gameObject = m_gameObject.lock();
+    if (!gameObject) {
+        std::stringstream msgBuilder;
+        msgBuilder << "Component " << m_name << " not attached to game object";
+        throw Exception(msgBuilder.str());
+    }
 
 }
 

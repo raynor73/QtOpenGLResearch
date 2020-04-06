@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QElapsedTimer>
 #include <QOpenGLWidget>
+#include <memory>
 #include <ode/ode.h>
 #include "glm/glm.hpp"
 #include "domain/mesh.h"
@@ -31,7 +32,7 @@ private:
     QElapsedTimer m_renderTimer;
     QElapsedTimer m_dtTimer;
 
-    Mesh m_mesh;
+    std::shared_ptr<Mesh> m_mesh;
     glm::vec3 m_meshEulerAngles;
     glm::vec3 m_meshPosition;
     float m_meshRotationSpeed = 1; // rad per second

@@ -12,6 +12,7 @@
 OpenGLWidget::OpenGLWidget(QWidget* parent, float fpsLimit) :
     QOpenGLWidget(parent),
     m_fpsPeriod(1000 / fpsLimit),
+    m_mesh(std::shared_ptr<Mesh>()),
     m_meshEulerAngles(glm::vec3(0)),
     m_meshPosition(glm::vec3(0)),
     m_openGLGeometryRepository(OpenGLGeometryRepository(m_openGLErrorDetector)),
@@ -70,7 +71,7 @@ void OpenGLWidget::initScene()
 
     Mesh mesh(vertices, indices);
 
-    m_mesh = mesh;
+    m_mesh = std::make_shared<Mesh>(mesh);
 
     m_openGLGeometryRepository.createStaticVertexBuffer("plane", extractVerticesData(mesh));
     m_openGLGeometryRepository.createStaticIndexBuffer("plane", mesh.indices());

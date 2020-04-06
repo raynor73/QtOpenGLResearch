@@ -22,6 +22,7 @@ SOURCES += \
     data/iboinfo.cpp \
     data/lightsources.cpp \
     data/meshrenderercomponent.cpp \
+    data/opengl_state/openglstate.cpp \
     data/openglerrordetector.cpp \
     data/openglgeometryrepository.cpp \
     data/openglshadersrepository.cpp \
@@ -44,7 +45,9 @@ SOURCES += \
     domain/gameobjectshierarchycontainer.cpp \
     domain/geometryrepository.cpp \
     domain/light_sources/directionallight.cpp \
+    domain/materialcomponent.cpp \
     domain/mesh.cpp \
+    domain/meshcomponent.cpp \
     domain/meshcontroller.cpp \
     domain/renderingengine.cpp \
     domain/scene.cpp \
@@ -64,6 +67,7 @@ HEADERS += \
     data/iboinfo.h \
     data/lightsources.h \
     data/meshrenderercomponent.h \
+    data/opengl_state/openglstate.h \
     data/openglerrordetector.h \
     data/openglgeometryrepository.h \
     data/openglshadersrepository.h \
@@ -87,7 +91,9 @@ HEADERS += \
     domain/gameobjectshierarchycontainer.h \
     domain/geometryrepository.h \
     domain/light_sources/directionallight.h \
+    domain/materialcomponent.h \
     domain/mesh.h \
+    domain/meshcomponent.h \
     domain/meshcontroller.h \
     domain/renderingengine.h \
     domain/scene.h \
