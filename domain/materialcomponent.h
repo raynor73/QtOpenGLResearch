@@ -23,7 +23,12 @@ public:
     );
 
     std::shared_ptr<const std::string> textureName() const { return m_textureName; }
-    void setTextureName(std::shared_ptr<std::string> textureName) { m_textureName = std::make_shared<std::string>(textureName->c_str()); }
+    void setTextureName(std::shared_ptr<std::string> textureName)
+    {
+        m_textureName = textureName ?
+                    std::make_shared<std::string>(textureName->c_str()) :
+                    std::shared_ptr<std::string>();
+    }
     const glm::vec4& diffuseColor() const { return m_diffuseColor; }
     void setDiffuseColor(const glm::vec4& diffuseColor) { m_diffuseColor = diffuseColor; }
     bool isDoubleSided() const { return m_isDoubleSided; }

@@ -15,7 +15,7 @@ MaterialComponent::MaterialComponent(
         bool isSprite
 ) :
     GameObjectComponent(name),
-    m_textureName(std::make_shared<std::string>(textureName->c_str())),
+    m_textureName(textureName ? std::make_shared<std::string>(textureName->c_str()) : std::shared_ptr<std::string>()),
     m_diffuseColor(diffuseColor),
     m_isDoubleSided(isDoubleSided),
     m_isWireframe(isWireframe),
