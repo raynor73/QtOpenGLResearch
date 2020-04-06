@@ -6,11 +6,13 @@
 #include "domain/gameobjectshierarchycontainer.h"
 #include "data/opengl_state/openglstate.h"
 #include "data/openglerrordetector.h"
+#include "domain/displaymetricsrepository.h"
 
 class ResearchRenderingEngine : public RenderingEngine
 {
 public:
     ResearchRenderingEngine(
+            DisplayMetricsRepository& displayMetrixReposotory,
             OpenGLErrorDetector& openGLErrorDetector,
             GameObjectsHierarchyContainer& gameObjectsHierarchyContainer
     );
@@ -25,6 +27,7 @@ public:
     virtual void render() override;
 
 private:
+    DisplayMetricsRepository& m_displayMetricsRepository;
     OpenGLErrorDetector& m_openGLErrorDetector;
     GameObjectsHierarchyContainer& m_gameObjectsHierarchyContainer;
     std::stack<OpenGLState> m_openGLStateStack;

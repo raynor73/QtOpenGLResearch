@@ -8,9 +8,11 @@ void hierarchyReportCallback(GameObject& gameObject, void* userData)
 }
 
 ResearchRenderingEngine::ResearchRenderingEngine(
+        DisplayMetricsRepository& displayMetricsRepository,
         OpenGLErrorDetector& openGLErrorDetector,
         GameObjectsHierarchyContainer& gameObjectsHierarchyContainer
 ) :
+    m_displayMetricsRepository(displayMetricsRepository),
     m_openGLErrorDetector(openGLErrorDetector),
     m_gameObjectsHierarchyContainer(gameObjectsHierarchyContainer)
 {
@@ -54,7 +56,30 @@ void ResearchRenderingEngine::removeTextureArray(const std::string& name)
 
 void ResearchRenderingEngine::render()
 {
-    glClearColor(0, 0, 0, 1);
+    glClearColor(0, 0.5, 0, 1);
+
+    pushOpenGLState({
+                        .viewport = {
+                            .x = 0,
+                            .y = 0,
+                            .width = m_displayMetricsRepository.width(),
+                            .height = m_displayMetricsRepository.height()
+                        },
+                        .scissor = {
+                            .x = 0,
+                            .y = 0,
+                            .width = m_displayMetricsRepository.width(),
+                            .height = m_displayMetricsRepository.height()
+                        },
+                        .blend = false,
+                        .blendFunction = { GL_ONE, GL_ONE },
+                        .depthMask = true,
+                        .depthFunction = GL_LESS
+    });
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    popOpenGLState();
 }
 
 void ResearchRenderingEngine::pushOpenGLState(const OpenGLState& state)
